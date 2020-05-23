@@ -300,51 +300,131 @@
 
 
 
-// Quando o usuário clicar nos links internos do site,
-// adicione a classe ativo ao item clicado e remova dos
-// demais itens caso eles possuam a mesma. Previna
-// o comportamento padrão desses links
-const linkInterno = document.querySelectorAll('a[href^="#"]');
+// // Quando o usuário clicar nos links internos do site,
+// // adicione a classe ativo ao item clicado e remova dos
+// // demais itens caso eles possuam a mesma. Previna
+// // o comportamento padrão desses links
+// const linkInterno = document.querySelectorAll('a[href^="#"]');
 
-function ativaLink(e) {
-  e.preventDefault();
-  linkInterno.forEach((item) => item.classList.remove('ativo'));
-  e.currentTarget.classList.add('ativo');
-}
+// function ativaLink(e) {
+//   e.preventDefault();
+//   linkInterno.forEach((item) => item.classList.remove('ativo'));
+//   e.currentTarget.classList.add('ativo');
+// }
 
-linkInterno.forEach((item) => {
-  item.addEventListener('click', ativaLink);
-});
+// linkInterno.forEach((item) => {
+//   item.addEventListener('click', ativaLink);
+// });
 
-// Selecione todos os elementos do site começando a partir do body,
-// ao clique mostre exatamente quais elementos estão sendo clicados
-const allElements = document.querySelectorAll('body *');
+// // Selecione todos os elementos do site começando a partir do body,
+// // ao clique mostre exatamente quais elementos estão sendo clicados
+// const allElements = document.querySelectorAll('body *');
 
-function showElement(e) {
-  console.log(e.target);
-}
+// function showElement(e) {
+//   console.log(e.target);
+// }
 
-allElements.forEach((item) => {
-  item.addEventListener('click', showElement);
-});
+// allElements.forEach((item) => {
+//   item.addEventListener('click', showElement);
+// });
 
-// Utilizando o código anterior, ao invés de mostrar no console,
-// remova o elemento que está sendo clicado, o método remove() remove um elemento
+// // Utilizando o código anterior, ao invés de mostrar no console,
+// // remova o elemento que está sendo clicado, o método remove() remove um elemento
 
-function removeElement(e) {
-  e.target.remove();
-}
+// function removeElement(e) {
+//   e.target.remove();
+// }
 
-allElements.forEach((item) => {
-  item.addEventListener('click', removeElement);
-});
+// allElements.forEach((item) => {
+//   item.addEventListener('click', removeElement);
+// });
 
-// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
-const htmlSite = document.querySelector('html');
+// // Se o usuário clicar na tecla (t), aumente todo o texto do site. 
+// const htmlSite = document.querySelector('html');
 
-function aumentoTexto(e) {
-  if (e.key === 't')
-    htmlSite.style.fontSize = '2rem';
-}
+// function aumentoTexto(e) {
+//   if (e.key === 't')
+//     htmlSite.style.fontSize = '2rem';
+// }
 
-document.addEventListener('keyup', aumentoTexto);
+// document.addEventListener('keyup', aumentoTexto);
+
+
+// ---------
+
+
+//Transversing e Manipulação
+
+// // // Selecionando os elementos
+
+// const menu = document.querySelector('.menu');
+
+// menu.outerHTML; // Seleciona todos os elementos, inclusive ele mesmo
+// menu.innerHTML; // Seleciona todos os elemtnos, meno ele mesmo
+// menu.innerText; // Seleciona o texta interno
+
+
+// // Tranversing, navegando pelo DOM
+// const lista = document.querySelector('.animais-lista');
+
+// lista.parentElement; //Pai
+// lista.parentElement.parentElement; //Pai do pai
+// lista.previousElementSibling; //Elemento acima
+// lista.nextElementSibling; //Elemento abaixo
+
+// lista.children; //Todos os elementos filhos
+// lista.children[0]; //Primeiro elemento filho
+// lista.children[--lista.children.length]; //Último filho
+
+// // Manipulando elementos
+// const lista = document.querySelector('.animais-lista');
+// const contato = document.querySelector('.contato');
+// const titulo = contato.querySelector('.titulo');
+
+// contato.appendChild(lista); //Move lista para contato
+// contato.insertBefore(lista, titulo); //Insere a lista antes de titulo
+// contato.removeChild(titulo); //Remove titulo de contato
+// contato.replaceChild(lista, titulo); //Substitui o titilo pela lista
+
+// //Criando novos elementos
+// const animais = document.querySelector('.animais');
+
+// const novoH1 = document.createElement('h1');
+// novoH1.innerText = 'Novo Título';
+// novoH1.classList.add('titulo');
+
+// animais.appendChild(novoH1);
+
+
+// // Clonando elementos
+// const titulo = document.querySelector('h1');
+// const Titulo2 = document.querySelector('h1');
+// const novoTitulo = titulo;
+// // Todos estes títulos são iguais
+
+// const cloneTitulo = titulo.cloneNode(true);
+// const contato = document.querySelector('.contato');
+// contato.appendChild(cloneTitulo);
+
+
+
+
+// // Duplique o menu e adicione ele em copy
+const menu = document.querySelector('.menu');
+const copy = document.querySelector('.copy');
+const menuC = menu.cloneNode(true);
+
+copy.appendChild(menuC);
+
+// // Selecione o primeiro DT da dl de Faq
+const faq = document.querySelector('.faq');
+const faqDl = faq.querySelector('dt');
+console.log(faqDl);
+
+// // Selecione o DD referente ao primeiro DT
+console.log(faqDl.nextElementSibling);
+
+// // Substitua o conteúdo html de .faq pelo de .animais
+const animais = document.querySelector('.animais');
+
+faq.innerHTML = animais.innerHTML;
