@@ -1,5 +1,4 @@
 //Para visualizar os casos de estudo, descomente as linhas abaixo
-
 // //Selecionando por ID
 // const animais = document.getElementById('animais');
 // console.log(animais);
@@ -145,3 +144,207 @@
 
 
 // ------------
+
+// //Visualizando o distânciento e posicionamento dos elementos
+// const listaAnimais = document.querySelector('.animais-lista');
+
+// const listaHeight = listaAnimais.clientHeight;
+// const listaHeightScroll = listaAnimais.scrollHeight;
+// const listaTop = listaAnimais.offsetTop;
+
+// console.log(listaHeight, listaHeightScroll, listaTop);
+
+// const primeiroH2 = document.querySelector('h2');
+// const h2Left = primeiroH2.offsetLeft;
+// console.log(h2Left);
+
+// // Método que retorna todos os valores de posicionamento
+// const animaisSection = document.querySelector('.animais');
+// const rect = animaisSection.getBoundingClientRect();
+
+// console.log(
+//   rect,
+//   rect.height,
+//   rect.bottom,
+//   rect.left
+// );
+
+// // Posicionamento com Window
+// console.log(
+//   window.innerWidth,
+//   window.outerWidth,
+//   window.innerHeight,
+//   window.outerHeight,
+//   window.pageXOffset,
+//   window.pageYOffset
+// );
+
+// // MatchMedia funciona como o media querie do CSS
+// const small = window.matchMedia('(max-width: 600px)');
+
+// if (small.matches) {
+//   console.log('Tela menor que 600px')
+// } else {
+//   console.log('Tela maior que 600px')
+// }
+
+
+// // Verifique a distância da primeira imagem
+// // em relação ao topo da página
+// const firstImg = document.querySelector('img');
+// console.log(firstImg.offsetTop);
+
+// // Retorne a soma da largura de todas as imagens
+// const allImgs = document.querySelectorAll('img');
+// let imgSize = 0;
+
+// window.onload = function () {
+//   allImgs.forEach((item) => {
+//     imgSize += item.clientWidth;
+//   });
+//   console.log(imgSize);
+// };
+
+// // Verifique se os links da página possuem
+// // o mínimo recomendado para telas utilizadas
+// // com o dedo. (48px/48px de acordo com o google)
+// const pageLinks = document.querySelectorAll('a');
+
+// pageLinks.forEach((item) => {
+//   const width = item.clientWidth;
+//   const heigth = item.clientHeight;
+
+//   if (width < 48 || heigth < 48) {
+//     console.log(`O link ${item.outerHTML} está com um tamanho muito pequeno para dispositivos mobile`);
+//   } else {
+//     console.log('Todos os links estáo com um bom tamanho');
+//   }
+// });
+
+// // Se o browser for menor que 720px,
+// // adicione a classe menu-mobile ao menu
+// const mobileSize = window.matchMedia('(max-width: 720px)');
+
+// if (mobileSize.matches) {
+//   const menu = document.querySelector('.menu');
+//   menu.classList.add('menu-mobile');
+// }
+
+
+// -----------
+
+
+// //Trabalhando com eventos
+
+
+//Chamada principal
+// const img = document.querySelector('img');
+
+// img.addEventListener('click', function () {
+//   console.log('clicou');
+// });
+
+// //Declarando a função no call back
+// const img = document.querySelector('img');
+
+// function callback() {
+//   console.log('clicou');
+// }
+
+// img.addEventListener('click', callback);
+
+
+// // // Primeiro parâmetro do callback é o evento
+// const img = document.querySelector('img');
+
+// function callback(event) {
+//   console.log(event);
+// }
+
+// img.addEventListener('click', callback);
+
+// // Propriedades do event
+// const animaisLista = document.querySelector('.animais-lista');
+
+// function excCallback(event) {
+//   const currentTarget = event.currentTarget;
+//   const target = event.target;
+//   const type = event.type;
+//   const path = event.path;
+//   console.log(currentTarget, target, type, path);
+// }
+
+// animaisLista.addEventListener('click', excCallback);
+
+// // Método muito útilizado preventDefault
+// const linkInterno = document.querySelector('a[href^="http"]');
+
+// function clickLink(event) {
+//   event.preventDefault();
+//   console.log(event.currentTarget.href);
+// }
+
+// linkInterno.addEventListener('click', clickLink); // Dessa forma evita o direcionamento para a página
+
+// // É necessário utilizar o forEach para adicionar o addEventListener para múltiplos alvos.
+// const imgs = document.querySelectorAll('img');
+
+// function imgSrc(event) {
+//   const src = event.currentTarget.getAttribute('src');
+//   console.log(src);
+// }
+
+// imgs.forEach((item) => {
+//   item.addEventListener('click', imgSrc);
+// });
+
+
+
+// Quando o usuário clicar nos links internos do site,
+// adicione a classe ativo ao item clicado e remova dos
+// demais itens caso eles possuam a mesma. Previna
+// o comportamento padrão desses links
+const linkInterno = document.querySelectorAll('a[href^="#"]');
+
+function ativaLink(e) {
+  e.preventDefault();
+  linkInterno.forEach((item) => item.classList.remove('ativo'));
+  e.currentTarget.classList.add('ativo');
+}
+
+linkInterno.forEach((item) => {
+  item.addEventListener('click', ativaLink);
+});
+
+// Selecione todos os elementos do site começando a partir do body,
+// ao clique mostre exatamente quais elementos estão sendo clicados
+const allElements = document.querySelectorAll('body *');
+
+function showElement(e) {
+  console.log(e.target);
+}
+
+allElements.forEach((item) => {
+  item.addEventListener('click', showElement);
+});
+
+// Utilizando o código anterior, ao invés de mostrar no console,
+// remova o elemento que está sendo clicado, o método remove() remove um elemento
+
+function removeElement(e) {
+  e.target.remove();
+}
+
+allElements.forEach((item) => {
+  item.addEventListener('click', removeElement);
+});
+
+// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
+const htmlSite = document.querySelector('html');
+
+function aumentoTexto(e) {
+  if (e.key === 't')
+    htmlSite.style.fontSize = '2rem';
+}
+
+document.addEventListener('keyup', aumentoTexto);
