@@ -626,4 +626,4 @@ transacoes2.forEach((transacao) => {
   if (nomeLimpo.includes('taxa')) ++totalTaxas;
 });
 
-console.log(totalTaxas++);
+console.log(totalTaxas);
