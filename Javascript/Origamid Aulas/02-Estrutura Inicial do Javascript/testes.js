@@ -560,70 +560,107 @@
 
 // // Strings
 
-// Utilizando o foreach na array abaixo,
-// some os valores de Taxa e os valores de Recebimento
+// // Utilizando o foreach na array abaixo,
+// // some os valores de Taxa e os valores de Recebimento
 
-const transacoes = [{
-    descricao: 'Taxa do Pão',
-    valor: 'R$ 39',
-  },
-  {
-    descricao: 'Taxa do Mercado',
-    valor: 'R$ 129',
-  },
-  {
-    descricao: 'Recebimento de Cliente',
-    valor: 'R$ 99',
-  },
-  {
-    descricao: 'Taxa do Banco',
-    valor: 'R$ 129',
-  },
-  {
-    descricao: 'Recebimento de Cliente',
-    valor: 'R$ 49',
-  },
+// const transacoes = [{
+//     descricao: 'Taxa do Pão',
+//     valor: 'R$ 39',
+//   },
+//   {
+//     descricao: 'Taxa do Mercado',
+//     valor: 'R$ 129',
+//   },
+//   {
+//     descricao: 'Recebimento de Cliente',
+//     valor: 'R$ 99',
+//   },
+//   {
+//     descricao: 'Taxa do Banco',
+//     valor: 'R$ 129',
+//   },
+//   {
+//     descricao: 'Recebimento de Cliente',
+//     valor: 'R$ 49',
+//   },
+// ];
+
+// let taxas = 0,
+//   recebimento = 0;
+
+// transacoes.forEach((transacao) => {
+//   let valorLimpo = +transacao.valor.replace('R$ ', '');
+//   if (transacao.descricao.slice(0, 4) === 'Taxa')
+//     taxas += valorLimpo;
+//   else
+//     recebimento += valorLimpo;
+// });
+
+// console.log(`Total de taxas: R$ ${taxas} / Total de recebimento R$ ${recebimento}`);
+
+// // Retorne uma array com a lista abaixo
+// const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+// const transportesArray = transportes.split(';');
+// console.log(transportesArray);
+
+// // Substitua todos os span's por a's
+// const html = `<ul>
+//                 <li><span>Sobre</span></li>
+//                 <li><span>Produtos</span></li>
+//                 <li><span>Contato</span></li>
+//               </ul>`;
+// const htmlMod = html.split('span').join('a');
+// console.log(htmlMod);
+
+// // Retorne o último caracter da frase
+// const frase = 'Melhor do ano!';
+// const ultimochar = frase.slice(-1);
+// console.log(ultimochar);
+
+// // Retorne o total de taxas
+// const transacoes2 = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
+// let totalTaxas = 0;
+
+// transacoes2.forEach((transacao) => {
+//   const nomeLimpo = transacao.toLowerCase().trim();
+//   if (nomeLimpo.includes('taxa')) ++totalTaxas;
+// });
+
+// console.log(totalTaxas);
+
+
+// // ---------
+
+
+// // Number
+
+// Retorne um número aleatório
+// entre 1050 e 2000
+const randomNum = Math.floor(Math.random() * (2000 - 1050 + 1) + 1050);
+console.log(randomNum);
+
+// Retorne o maior número da lista abaixo
+const numeros = '4, 5, 20, 8, 9';
+const numerosArray = numeros.split(',');
+const numeroMax = Math.max(...numerosArray);
+console.log(numeroMax);
+
+// Crie uma função para limpar os preços
+// e retornar os números com centavos arredondados
+// depois retorne a soma total
+const listaPrecos = ['R$ 59,99', ' R$ 100,222',
+  'R$ 230  ', 'r$  200'
 ];
+let valorTotal = 0;
 
-let taxas = 0,
-  recebimento = 0;
-
-transacoes.forEach((transacao) => {
-  let valorLimpo = +transacao.valor.replace('R$ ', '');
-  if (transacao.descricao.slice(0, 4) === 'Taxa')
-    taxas += valorLimpo;
-  else
-    recebimento += valorLimpo;
+listaPrecos.forEach((preco) => {
+  valorTotal += limparPreco(preco);
 });
 
-console.log(`Total de taxas: R$ ${taxas} / Total de recebimento R$ ${recebimento}`);
+function limparPreco(preco) {
+  preco = +preco.toUpperCase().replace('R$', '').trim().replace(',', '.');
+  preco = +preco.toFixed(2);
+  return preco;
+}
 
-// Retorne uma array com a lista abaixo
-const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
-const transportesArray = transportes.split(';');
-console.log(transportesArray);
-
-// Substitua todos os span's por a's
-const html = `<ul>
-                <li><span>Sobre</span></li>
-                <li><span>Produtos</span></li>
-                <li><span>Contato</span></li>
-              </ul>`;
-const htmlMod = html.split('span').join('a');
-console.log(htmlMod);
-
-// Retorne o último caracter da frase
-const frase = 'Melhor do ano!';
-const ultimochar = frase.slice(-1);
-console.log(ultimochar);
-
-// Retorne o total de taxas
-const transacoes2 = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
-let totalTaxas = 0;
-
-transacoes2.forEach((transacao) => {
-  const nomeLimpo = transacao.toLowerCase().trim();
-  if (nomeLimpo.includes('taxa')) ++totalTaxas;
-});
-
-console.log(totalTaxas);
+console.log(valorTotal);
