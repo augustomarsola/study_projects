@@ -428,3 +428,107 @@
 // const animais = document.querySelector('.animais');
 
 // faq.innerHTML = animais.innerHTML;
+
+
+
+// ---------
+
+// // Criando constructor functions
+
+// function Dom(seletor) {
+//   const element = document.querySelector(seletor);
+//   this.ativo = function (classe) {
+//     element.classList.add(classe);
+//   };
+// }
+
+// const lista = new Dom('li');
+// lista.ativo('ativo');
+
+// const lastLi = new Dom('li:last-child');
+// lastLi.ativo('ativo');
+
+
+
+// // Transforme o objeto abaixo em uma Constructor Function
+// const pessoa = {
+//   nome: 'Nome pessoa',
+//   idade: 0,
+//   andar() {
+//     console.log(this.nome + ' andou');
+//   }
+// }
+
+// function Pessoa(nome, idade) {
+//   this.nome = nome;
+//   this.idade = idade;
+//   this.andar = function () {
+//     console.log(this.nome + ' andou');
+//   };
+// }
+
+// // Crie 3 pessoas, João - 20 anos,
+// // Maria - 25 anos, Bruno - 15 anos
+// const joao = new Pessoa('João', 20);
+// const maria = new Pessoa('Maria', 25);
+// const bruno = new Pessoa('Bruno', 15);
+
+// // Crie uma Constructor Function (Dom) para manipulação
+// // de listas de elementos do dom. Deve conter as seguintes
+// // propriedades e métodos:
+// //
+// // elements, retorna NodeList com os elementos selecionados
+// // addClass(classe), adiciona a classe a todos os elementos
+// // removeClass(classe), remove a classe a todos os elementos
+// function Dom(elements) {
+//   this.elements = document.querySelectorAll(elements);
+//   this.addClass = function (classe) {
+//     this.elements.forEach((element) => {
+//       element.classList.add(classe);
+//     });
+//   };
+//   this.removeClass = function (classe) {
+//     this.elements.forEach((element) => {
+//       element.classList.remove(classe);
+//     });
+//   };
+// }
+
+
+// // -------------
+
+
+// Crie uma função construtora de Pessoas
+// Deve conter nome, sobrenome e idade
+// Crie um método no protótipo que retorne
+// o nome completo da pessoa
+function Pessoas(nome, sobrenome, idade) {
+  this.nome = nome;
+  this.sobrenome = sobrenome;
+  this.idade = idade;
+}
+
+Pessoas.prototype.nomeCompleto = function () {
+  return `${this.nome} ${this.sobrenome}`;
+};
+
+// Liste os métodos acessados por 
+// dados criados com NodeList,
+// HTMLCollection, Document
+console.log(NodeList.prototype);
+console.log(HTMLCollection.prototype);
+console.log(Document.prototype);
+
+// Liste os construtores dos dados abaixo
+const li = document.querySelector('li');
+
+console.log(li.constructor.name); // HTMLLIElement
+console.log(li.click.constructor.name); // Function
+console.log(li.innerText.constructor.name); // String
+console.log(li.value.constructor.name); // Nunber
+console.log(li.hidden.constructor.name); // Boolean
+console.log(li.offsetLeft.constructor.name); // Number
+// console.log(li.click().constructor.name); // undefined
+
+// Qual o construtor do dado abaixo:
+console.log(li.hidden.constructor.name.constructor.name); // String
