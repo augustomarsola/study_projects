@@ -498,37 +498,132 @@
 // // -------------
 
 
-// Crie uma função construtora de Pessoas
-// Deve conter nome, sobrenome e idade
-// Crie um método no protótipo que retorne
-// o nome completo da pessoa
-function Pessoas(nome, sobrenome, idade) {
-  this.nome = nome;
-  this.sobrenome = sobrenome;
-  this.idade = idade;
-}
+// // Crie uma função construtora de Pessoas
+// // Deve conter nome, sobrenome e idade
+// // Crie um método no protótipo que retorne
+// // o nome completo da pessoa
+// function Pessoas(nome, sobrenome, idade) {
+//   this.nome = nome;
+//   this.sobrenome = sobrenome;
+//   this.idade = idade;
+// }
 
-Pessoas.prototype.nomeCompleto = function () {
-  return `${this.nome} ${this.sobrenome}`;
-};
+// Pessoas.prototype.nomeCompleto = function () {
+//   return `${this.nome} ${this.sobrenome}`;
+// };
 
-// Liste os métodos acessados por 
-// dados criados com NodeList,
-// HTMLCollection, Document
-console.log(NodeList.prototype);
-console.log(HTMLCollection.prototype);
-console.log(Document.prototype);
+// // Liste os métodos acessados por 
+// // dados criados com NodeList,
+// // HTMLCollection, Document
+// console.log(NodeList.prototype);
+// console.log(HTMLCollection.prototype);
+// console.log(Document.prototype);
 
-// Liste os construtores dos dados abaixo
-const li = document.querySelector('li');
+// // Liste os construtores dos dados abaixo
+// const li = document.querySelector('li');
 
-console.log(li.constructor.name); // HTMLLIElement
-console.log(li.click.constructor.name); // Function
-console.log(li.innerText.constructor.name); // String
-console.log(li.value.constructor.name); // Nunber
-console.log(li.hidden.constructor.name); // Boolean
-console.log(li.offsetLeft.constructor.name); // Number
-// console.log(li.click().constructor.name); // undefined
+// console.log(li.constructor.name); // HTMLLIElement
+// console.log(li.click.constructor.name); // Function
+// console.log(li.innerText.constructor.name); // String
+// console.log(li.value.constructor.name); // Nunber
+// console.log(li.hidden.constructor.name); // Boolean
+// console.log(li.offsetLeft.constructor.name); // Number
+// // console.log(li.click().constructor.name); // undefined
 
-// Qual o construtor do dado abaixo:
-console.log(li.hidden.constructor.name.constructor.name); // String
+// // Qual o construtor do dado abaixo:
+// console.log(li.hidden.constructor.name.constructor.name); // String
+
+
+// // -------
+
+// Liste 5 objetos nativos
+// Object
+// String
+// Array
+// Function
+// Number
+
+// Liste 5 objetos do browser
+// Window
+// history
+// Document
+// HTMLColletion
+// NodeList
+
+// Liste 2 Métodos, Propriedades ou Objetos
+// presentes no Chrome que não existem no Firefox
+// document.webkitVisibilityState
+
+
+// ---------
+
+
+// // Strings
+
+// Utilizando o foreach na array abaixo,
+// some os valores de Taxa e os valores de Recebimento
+
+const transacoes = [{
+    descricao: 'Taxa do Pão',
+    valor: 'R$ 39',
+  },
+  {
+    descricao: 'Taxa do Mercado',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 99',
+  },
+  {
+    descricao: 'Taxa do Banco',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 49',
+  },
+];
+
+let taxas = 0,
+  recebimento = 0;
+
+transacoes.forEach((transacao) => {
+  let valorLimpo = +transacao.valor.replace('R$ ', '');
+  if (transacao.descricao.slice(0, 4) === 'Taxa')
+    taxas += valorLimpo;
+  else
+    recebimento += valorLimpo;
+});
+
+console.log(`Total de taxas: R$ ${taxas} / Total de recebimento R$ ${recebimento}`);
+
+// Retorne uma array com a lista abaixo
+const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+const transportesArray = transportes.split(';');
+console.log(transportesArray);
+
+// Substitua todos os span's por a's
+const html = `<ul>
+                <li><span>Sobre</span></li>
+                <li><span>Produtos</span></li>
+                <li><span>Contato</span></li>
+              </ul>`;
+const htmlMod = html.split('span').join('a');
+console.log(htmlMod);
+
+// Retorne o último caracter da frase
+const frase = 'Melhor do ano!';
+const ultimochar = frase.slice(-1);
+console.log(ultimochar);
+
+// Retorne o total de taxas
+const transacoes2 = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
+let totalTaxas = 0;
+
+transacoes2.forEach((transacao) => {
+  const nomeLimpo = transacao.toLowerCase().trim();
+  if (nomeLimpo.includes('taxa')) ++totalTaxas;
+});
+
+console.log(totalTaxas);
