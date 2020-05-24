@@ -671,41 +671,94 @@
 
 // // Arrays
 
-// Remova o primeiro valor de comidas e coloque em uma variável
-// Remova o último valor de comidas e coloque em uma variável
-// Adicione 'Arroz' ao final da array
-// Adicione 'Peixe' e 'Batata' ao início da array
-const comidas = ['Pizza', 'Frango', 'Carne', 'Macarrão'];
-const primeiraComida = comidas.shift();
-const ultimaComida = comidas.pop();
-comidas.push('Arroz');
-comidas.unshift('Peixe', 'Batata');
-console.log(comidas, primeiraComida, ultimaComida);
+// // Remova o primeiro valor de comidas e coloque em uma variável
+// // Remova o último valor de comidas e coloque em uma variável
+// // Adicione 'Arroz' ao final da array
+// // Adicione 'Peixe' e 'Batata' ao início da array
+// const comidas = ['Pizza', 'Frango', 'Carne', 'Macarrão'];
+// const primeiraComida = comidas.shift();
+// const ultimaComida = comidas.pop();
+// comidas.push('Arroz');
+// comidas.unshift('Peixe', 'Batata');
+// console.log(comidas, primeiraComida, ultimaComida);
 
-// Arrume os estudantes em ordem alfabética
-// Inverta a ordem dos estudantes
-// Verifique se Joana faz parte dos estudantes
-// Verifique se Juliana faz parte dos estudantes
-const estudantes = ['Marcio', 'Brenda', 'Joana', 'Kleber', 'Julia'];
-console.log(estudantes.sort());
-console.log(estudantes.reverse());
-console.log(estudantes.includes('Joana'));
-console.log(estudantes.includes('Juliana'));
+// // Arrume os estudantes em ordem alfabética
+// // Inverta a ordem dos estudantes
+// // Verifique se Joana faz parte dos estudantes
+// // Verifique se Juliana faz parte dos estudantes
+// const estudantes = ['Marcio', 'Brenda', 'Joana', 'Kleber', 'Julia'];
+// console.log(estudantes.sort());
+// console.log(estudantes.reverse());
+// console.log(estudantes.includes('Joana'));
+// console.log(estudantes.includes('Juliana'));
 
 
-// Substitua section por ul e div com li,
-// utilizando split e join
-let html = `<section>
-              <div>Sobre</div>
-              <div>Produtos</div>
-              <div>Contato</div>
-            </section>`;
-html = html.split('section').join('ul').split('div').join('li');
-console.log(html);
+// // Substitua section por ul e div com li,
+// // utilizando split e join
+// let html = `<section>
+//               <div>Sobre</div>
+//               <div>Produtos</div>
+//               <div>Contato</div>
+//             </section>`;
+// html = html.split('section').join('ul').split('div').join('li');
+// console.log(html);
 
-// Remova o último carro, mas antes de remover
-// salve a array original em outra variável
-const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
-const carrosOriginal = carros.splice();
-carros.pop();
-console.log(carros);
+// // Remova o último carro, mas antes de remover
+// // salve a array original em outra variável
+// const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
+// const carrosOriginal = carros.splice();
+// carros.pop();
+// console.log(carros);
+
+
+// // ------
+
+
+// // Interações com arrays
+
+// Retorne uma lista com os
+// números maiores que 100
+const numeros = [3, 44, 333, 23, 122, 322, 33];
+const filtroNumeros = numeros.filter((numeros) => {
+  return numeros > 100;
+});
+
+console.log(filtroNumeros);
+
+// Verifique se Baixo faz parte
+// da lista de instrumentos e retorne true
+const instrumentos = ['Guitarra', 'Baixo', 'Bateria', 'Teclado'];
+const verificaBaixo = instrumentos.some((instrumento) => {
+  return instrumento === 'Baixo';
+});
+console.log(verificaBaixo);
+
+// Retorne o valor total das compras
+const compras = [{
+    item: 'Banana',
+    preco: 'R$ 4,99'
+  },
+  {
+    item: 'Ovo',
+    preco: 'R$ 2,99'
+  },
+  {
+    item: 'Carne',
+    preco: 'R$ 25,49'
+  },
+  {
+    item: 'Refrigerante',
+    preco: 'R$ 5,35'
+  },
+  {
+    item: 'Quejo',
+    preco: 'R$ 10,60'
+  }
+]
+
+const valorTotal = compras.reduce((valorAnterior, compra) => {
+  let valor = +compra.preco.replace('R$ ', '').replace(',', '.');
+  return valorAnterior + valor;
+}, 0);
+
+console.log(valorTotal);
