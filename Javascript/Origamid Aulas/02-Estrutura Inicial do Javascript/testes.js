@@ -716,49 +716,97 @@
 
 // // Interações com arrays
 
-// Retorne uma lista com os
-// números maiores que 100
-const numeros = [3, 44, 333, 23, 122, 322, 33];
-const filtroNumeros = numeros.filter((numeros) => {
-  return numeros > 100;
-});
+// // Selecione cada curso e retorne uma array
+// // com objetos contendo o título, descricao,
+// // aulas e horas de cada curso
+// const cursos = Array.from(document.querySelectorAll('.curso'));
+// const cursosDetalhes = cursos.map((curso) => {
+//   let cursoD = {
+//     nome: curso.querySelector('h1').innerText,
+//     descricao: curso.querySelector('p').innerText,
+//     aulas: curso.querySelector('.aulas').innerText,
+//     horas: curso.querySelector('.horas').innerText,
+//   };
+//   return cursoD;
+// });
+// console.log(cursosDetalhes);
 
-console.log(filtroNumeros);
+// // Retorne uma lista com os
+// // números maiores que 100
+// const numeros = [3, 44, 333, 23, 122, 322, 33];
+// const filtroNumeros = numeros.filter((numeros) => {
+//   return numeros > 100;
+// });
 
-// Verifique se Baixo faz parte
-// da lista de instrumentos e retorne true
-const instrumentos = ['Guitarra', 'Baixo', 'Bateria', 'Teclado'];
-const verificaBaixo = instrumentos.some((instrumento) => {
-  return instrumento === 'Baixo';
-});
-console.log(verificaBaixo);
+// console.log(filtroNumeros);
 
-// Retorne o valor total das compras
-const compras = [{
-    item: 'Banana',
-    preco: 'R$ 4,99'
-  },
-  {
-    item: 'Ovo',
-    preco: 'R$ 2,99'
-  },
-  {
-    item: 'Carne',
-    preco: 'R$ 25,49'
-  },
-  {
-    item: 'Refrigerante',
-    preco: 'R$ 5,35'
-  },
-  {
-    item: 'Quejo',
-    preco: 'R$ 10,60'
-  }
-]
+// // Verifique se Baixo faz parte
+// // da lista de instrumentos e retorne true
+// const instrumentos = ['Guitarra', 'Baixo', 'Bateria', 'Teclado'];
+// const verificaBaixo = instrumentos.some((instrumento) => {
+//   return instrumento === 'Baixo';
+// });
+// console.log(verificaBaixo);
 
-const valorTotal = compras.reduce((valorAnterior, compra) => {
-  let valor = +compra.preco.replace('R$ ', '').replace(',', '.');
-  return valorAnterior + valor;
+// // Retorne o valor total das compras
+// const compras = [{
+//     item: 'Banana',
+//     preco: 'R$ 4,99'
+//   },
+//   {
+//     item: 'Ovo',
+//     preco: 'R$ 2,99'
+//   },
+//   {
+//     item: 'Carne',
+//     preco: 'R$ 25,49'
+//   },
+//   {
+//     item: 'Refrigerante',
+//     preco: 'R$ 5,35'
+//   },
+//   {
+//     item: 'Quejo',
+//     preco: 'R$ 10,60'
+//   }
+// ]
+
+// const valorTotal = compras.reduce((valorAnterior, compra) => {
+//   let valor = +compra.preco.replace('R$ ', '').replace(',', '.');
+//   return valorAnterior + valor;
+// }, 0);
+
+// console.log(valorTotal);
+
+
+// // --------
+
+
+// // Extenção das funções
+
+// Retorne a soma total de caracteres dos
+// parágrafos acima utilizando reduce
+const chars = document.querySelectorAll('.lobo p');
+const charsSums = Array.prototype.reduce.call(chars, (sum, char) => {
+  return char.innerText.length + sum;
 }, 0);
+console.log(charsSums);
 
-console.log(valorTotal);
+// Crie uma função que retorne novos elementos
+// html, com os seguintes parâmetros
+// tag, classe e conteudo.
+function newTag(tag, classS, content) {
+  const nelement = document.createElement(tag);
+  if (classS) nelement.classList.add(classS);
+  if (content) nelement.innerText = content;
+  return nelement;
+}
+
+console.log(newTag('div', 'teste', 'Olha o texto'));
+
+// Crie uma nova função utilizando a anterior como base
+// essa nova função deverá sempre criar h1 com a
+// classe titulo. Porém o parâmetro conteudo continuará dinâmico
+const creatH1 = newTag.bind(null, 'h1', 'ativo');
+
+console.log(creatH1('olha o texto'));
