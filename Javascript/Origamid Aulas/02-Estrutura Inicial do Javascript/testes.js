@@ -784,29 +784,71 @@
 
 // // Extenção das funções
 
-// Retorne a soma total de caracteres dos
-// parágrafos acima utilizando reduce
-const chars = document.querySelectorAll('.lobo p');
-const charsSums = Array.prototype.reduce.call(chars, (sum, char) => {
-  return char.innerText.length + sum;
-}, 0);
-console.log(charsSums);
+// // Retorne a soma total de caracteres dos
+// // parágrafos acima utilizando reduce
+// const chars = document.querySelectorAll('.lobo p');
+// const charsSums = Array.prototype.reduce.call(chars, (sum, char) => {
+//   return char.innerText.length + sum;
+// }, 0);
+// console.log(charsSums);
 
-// Crie uma função que retorne novos elementos
-// html, com os seguintes parâmetros
-// tag, classe e conteudo.
-function newTag(tag, classS, content) {
-  const nelement = document.createElement(tag);
-  if (classS) nelement.classList.add(classS);
-  if (content) nelement.innerText = content;
-  return nelement;
+// // Crie uma função que retorne novos elementos
+// // html, com os seguintes parâmetros
+// // tag, classe e conteudo.
+// function newTag(tag, classS, content) {
+//   const nelement = document.createElement(tag);
+//   if (classS) nelement.classList.add(classS);
+//   if (content) nelement.innerText = content;
+//   return nelement;
+// }
+
+// console.log(newTag('div', 'teste', 'Olha o texto'));
+
+// // Crie uma nova função utilizando a anterior como base
+// // essa nova função deverá sempre criar h1 com a
+// // classe titulo. Porém o parâmetro conteudo continuará dinâmico
+// const creatH1 = newTag.bind(null, 'h1', 'ativo');
+
+// console.log(creatH1('olha o texto'));
+
+
+// // -------
+
+
+// // Manipulação dos objetos
+
+// Crie uma função que verifique
+// corretamente o tipo de dado
+function typeOfValue(value) {
+  return Object.prototype.toString.call(value);
 }
 
-console.log(newTag('div', 'teste', 'Olha o texto'));
+console.log(typeOfValue('Teste'));
+// Crie um objeto quadrado com
+// a propriedade lados e torne
+// ela imutável
+const quadrado = {};
+Object.defineProperties(quadrado, {
+  lados: {
+    value: 4,
+    enumerable: true
+  }
+});
 
-// Crie uma nova função utilizando a anterior como base
-// essa nova função deverá sempre criar h1 com a
-// classe titulo. Porém o parâmetro conteudo continuará dinâmico
-const creatH1 = newTag.bind(null, 'h1', 'ativo');
+console.log(quadrado);
 
-console.log(creatH1('olha o texto'));
+// Previna qualquer mudança
+// no objeto abaixo
+const configuracao = {
+  width: 800,
+  height: 600,
+  background: '#333'
+};
+
+Object.freeze(configuracao);
+
+// Liste o nome de todas
+// as propriedades do
+// protótipo de String e Array
+console.log(Object.getOwnPropertyNames(String.prototype));
+console.log(Object.getOwnPropertyNames(Array.prototype));
