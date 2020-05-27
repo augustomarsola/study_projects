@@ -855,3 +855,53 @@
 
 
 // --------
+
+
+// // setTimeout e setIntervel
+
+// // Mude a cor da tela para azul e depois para vermelho a cada 2s.
+// const body = document.body;
+
+// setInterval(() => {
+//   if (body.style.backgroundColor === 'blue')
+//     body.style.backgroundColor = 'red';
+//   else
+//     body.style.backgroundColor = 'blue';
+// }, 2000);
+
+// Crie um cronometro utilizando o setInterval. Deve ser possível
+// iniciar, pausar e resetar (duplo clique no pausar).
+
+const btnIni = document.querySelector('.inicia'),
+  btnPause = document.querySelector('.pausa'),
+  btnRes = document.querySelector('.reseta'),
+  time = document.querySelector('.tempo');
+
+
+btnIni.addEventListener('click', initCount);
+btnPause.addEventListener('click', pauseCount);
+btnRes.addEventListener('click', resetCount);
+
+
+function initCount() {
+  if (!time.classList.contains('start')) {
+    time.classList.add('start');
+    crono = setInterval(cronoCount, 1000);
+  }
+}
+
+function pauseCount() {
+  time.classList.remove('start');
+  clearInterval(crono);
+}
+
+function resetCount() {
+  time.innerText = 0;
+}
+
+function cronoCount() {
+  let showTime = time.innerText,
+    timeInt = showTime ? parseInt(showTime) : 0;
+
+  time.innerText = ++timeInt;
+}
