@@ -905,3 +905,42 @@
 
 //   time.innerText = ++timeInt;
 // }
+
+
+// // Teste de validação e manipulação de formulários
+
+const contato = document.querySelector('#contato');
+const texto = document.querySelector('.texto');
+const dados = {};
+
+function handleKeyUp(e) {
+
+  // // --- Mensagem Customizada ---
+  // const target = e.target;
+
+  // if (!target.checkValidity()) {
+  //   target.classList.add('invalido');
+  //   target.setCustomValidity('Este campo é super importante');
+  //   contato.nome.setCustomValidity('O nome é super importante');
+  //   target.nextElementSibling.innerText = target.validationMessage;
+  // }
+
+  // console.log(e.target.checkValidity());
+  // console.log(event.target.value);
+  // texto.innerText = event.target.value;
+  // // --- Mensagem Customizada ---
+
+  // // --- Adiciona o valor para o background ---
+  // document.body.style.backgroundColor = e.target.value;
+  // // --- Adiciona o valor para o background ---
+
+  console.log(e.target.value);
+
+}
+
+function handleChange(e) {
+  dados[e.target.name] = e.target.value;
+  console.log(dados);
+}
+
+contato.addEventListener('change', handleChange);

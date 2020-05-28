@@ -5,6 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Array Interaction</title>
+  <style>
+    label {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      margin-top: 1rem;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: .5rem;
+      border: 2px solid #000;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    .invalido {
+      border-color: red;
+    }
+  </style>
 </head>
 
 <body>
@@ -46,6 +78,29 @@
     <button class="reseta">Resetar</button>
     <p>Tempo: <span class="tempo">0</span></p>
   </div>
+
+  <form name="contato" id="contato">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" required>
+    <span class="erro"></span>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    <span class="erro"></span>
+    <label for="textarea">Mensagem</label>
+    <textarea name="textarea" id="textarea"></textarea>
+    <span class="erro"></span>
+    <select name="cores" id="cores">
+      <option value="blue">Azul</option>
+      <option value="red">Vermelho</option>
+    </select>
+    <input type="color">
+    <input type="date">
+    <input type="number">
+    <input type="range">
+    <input type="password">
+  </form>
+  <span class="texto"></span>
+
   <script src="testes.js"></script>
 </body>
 
