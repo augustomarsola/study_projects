@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca Endereço</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="endereco">
+    <label for="cep">Digite o cep</label>
+    <input type="text" name="cep" id="cep">
+    <button type="button" id="buscarCep">Procurar</button>
+  </div>
+  <div class="resultado">
+    <p>CEP: <span id="rCep"></span></p>
+    <p>Estado: <span id="rUf"></span></p>
+    <p>Cidade: <span id="rCidade"></span></p>
+    <p>Bairro: <span id="rBairro"></span></p>
+  </div>
+  <div class="erro">
+    <p>Ocorreu um erro na sua busca!</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+.resultado,
+.erro {
+  display: none;
+}
+
+.resultado.active,
+.erro.active {
+  display: block;
+}
+
+.erro p {
+  font-weight: bold;
+  color: red;
+}
