@@ -8,6 +8,7 @@ import initDropdownMenu from './modules/dropdown-menu.js';
 import initmenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import iniFectAnimais from './modules/fecth-animais.js';
+import iniFectBitcoin from './modules/fecth-bitcoin.js';
 
 
 scrollSuave();
@@ -20,3 +21,4 @@ initDropdownMenu();
 initmenuMobile();
 initFuncionamento();
 iniFectAnimais();
+iniFectBitcoin();
