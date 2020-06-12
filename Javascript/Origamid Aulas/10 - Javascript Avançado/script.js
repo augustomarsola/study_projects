@@ -138,3 +138,66 @@ const {
 } = cachorro;
 
 console.log(bobCor);
+
+
+// ---------
+
+
+// // Parâmetro no ES6
+
+// function perimetroForm(lado, totalLados = 4) {
+//   console.log(arguments);
+//   return lado * totalLados;
+// }
+
+// console.log(perimetroForm(10, 5), perimetroForm(5));
+
+// function allArguments(...listaArgumentos) {
+//   console.log(listaArgumentos);
+// }
+
+// console.log(allArguments('teste', 10, 16, ['teste1', 'teste2']));
+
+// const frutas = ['Banana', 'Uva', 'Morango'];
+// const legumes = ['Cenoura', 'Batata'];
+// const comidas = ['Pizza', ...frutas, 'Chocolate', ...legumes];
+
+// console.log(comidas);
+
+// Reescreva a função utilizando
+// valores iniciais de parâmetros com ES6
+function createButton(background = 'blue', color = 'red') {
+  const buttonElement = document.createElement('button');
+  buttonElement.style.background = background;
+  buttonElement.style.color = color;
+  return buttonElement;
+}
+
+const redButton = createButton();
+
+// Utilize o método push para inserir as frutas ao final de comidas.
+const frutas = ['Banana', 'Uva', 'Morango'];
+const comidas = ['Pizza', 'Batata'];
+
+comidas.push(...frutas);
+console.log(comidas);
+
+
+// // ------
+
+// // Loops e Interable
+
+// Crie 4 li's na página
+// Utilizando o for...of
+// adicione uma classe a cada li
+const listas = document.querySelectorAll('li');
+for (const lista of listas) {
+  lista.classList.add('active');
+}
+
+// Utilize o for...in para listar
+// todos as propriedades e valores
+// do objeto window
+for (const prop in window) {
+  console.log(`${prop}: ${window[prop]}`);
+}
